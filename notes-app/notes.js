@@ -8,15 +8,16 @@ const readNote = (title) => {
   if (note) {
     console.log(chalk.green(note.title));
     console.log(note.body);
-  } else{
-      console.log(chalk.red('Unable to find the note'))
+  } else {
+    console.log(chalk.red("Unable to find the note"));
   }
 };
-
 
 const addNote = (title, body) => {
   const notes = loadNotes();
   const duplicateNote = notes.find((note) => note.title === title);
+
+  debugger;
 
   if (!duplicateNote) {
     notes.push({
@@ -33,7 +34,7 @@ const addNote = (title, body) => {
 
 const saveNotes = (notes) => {
   const dataJSON = JSON.stringify(notes);
-  fs.writeFileSync("notes.json", dataJSON);
+  fs.writeFileSync("notes.json", dataJsON);
 };
 
 const loadNotes = () => {

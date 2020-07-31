@@ -1,0 +1,31 @@
+const request = require("request");
+const chalk = require('chalk');
+
+const forecast = (latitude, longtitude, callback) => {
+  const url =
+    "http://api.weatherstack.com/current?access_key=c41d9e94d03f9473b0fb165f285294df&query=" +
+    latitude +
+    "," +
+    longtitude +
+    "&units=f";
+
+
+  request({ url: url, json: true }, (error, response) => {
+    if (error) {
+      callback("Unable to connect to weather service!");
+    } else if (response.body.error) {
+      callback("Unable to find location!");
+    } else {
+      callback(undefined, 
+          response.body.current.weather_descriptions[0] +
+          ". It is currently " +
+          response.body.current.temperature +
+          " degrees out. It feels like " +
+          response.body.current.feelslike +
+          " degrees out.",
+      );
+    }
+  });
+};
+
+module.exports = forecast;

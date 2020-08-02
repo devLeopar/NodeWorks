@@ -1,5 +1,4 @@
 const request = require("request");
-// const chalk = require('chalk');
 
 const forecast = (latitude, longtitude, callback) => {
   const url =
@@ -7,8 +6,8 @@ const forecast = (latitude, longtitude, callback) => {
     latitude +
     "," +
     longtitude +
-    "&units=f";
-
+    "&units=m";
+  
 
   request({ url: url, json: true }, (error, {body}) => {
     if (error) {

@@ -47,12 +47,14 @@ MongoClient.connect(
     //   }
     // );
 
-    db.collection("tasks").find({completed:false}).toArray((error,tasks)=>{
-        if(error){
-            return console.log(error)
-        }
+    // db.collection("tasks")
+    //   .find({ completed: false })
+    //   .toArray((error, tasks) => {
+    //     if (error) {
+    //       return console.log(error);
+    //     }
 
-        console.log(tasks);
-    })
+    //     console.log(tasks);
+    //   });
   }
 );
